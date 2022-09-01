@@ -24,7 +24,7 @@ Its in portuguese, but you can change the names of each column, a good AD will g
 
 In General tab you'll also find the contacts of the AD owner:
 
-![image](https://user-images.githubusercontent.com/33553051/187917431-6b1785fe-d459-4e05-9820-6b3993418d82.png)
+![image](https://user-images.githubusercontent.com/33553051/187918839-535f5d78-ab40-45c3-9eab-696edf53ca8d.png)
 
 
 So, if you're an Marketing agency you just need to contact those who are making pretty bad choices for their ADs and make some $$ helping them!
