@@ -16,4 +16,4 @@ def return_values(spreadsheet):
     return spreadsheet.worksheet("Key Words").get_all_records()
 
 def return_values2(spreadsheet):
-    return spreadsheet.worksheet("Geral").get_all_records()
+    return spreadsheet.worksheet("General").get_all_records()
