@@ -14,7 +14,7 @@ Make a list of words to search inside key words tab like this:
 ![image](https://user-images.githubusercontent.com/33553051/187916315-6cf44694-8877-4211-ba22-15595674686c.png)
 
 General tab will looklike this:
-![image](https://user-images.githubusercontent.com/33553051/187916672-6b716674-bf6b-439f-ada9-a58933f86dc9.png)
+![image](https://user-images.githubusercontent.com/33553051/187917844-121a2f57-3e36-45c7-8ea5-8a159af7e4dd.png)
 
 Its in portuguese, but you can change the names of each column, a good AD will get "100%" and "sim" grades
 
