@@ -31,12 +31,7 @@ options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 options.add_argument("--incognito")
 
-
-# print(options)
-
-
 random.seed()
-# driver = 
 
 browser = webdriver.Chrome("./chromedriver", options=options)
 browser.get("https://www.google.com/search?q=aaa&source=hp&ei=G5J5Yq3gGpiq1sQP7NCH4AQ&iflsig=AJiK0e8AAAAAYnmgKxlMgmed1qcgn8cSftu1dd1NpfV1&ved=0ahUKEwjt2aytuNP3AhUYlZUCHWzoAUwQ4dUDCAc&uact=5&oq=aaa&gs_lcp=Cgdnd3Mtd2l6EAMyDgguEIAEELEDEMcBEKMCMgsILhCABBCxAxDUAjIFCAAQgAQyCwguEIAEEMcBEK8BMggILhCABBCxAzIFCAAQgAQyBQguEIAEMggIABCxAxCDATIICAAQgAQQsQMyEQguEIAEELEDEIMBEMcBENEDOgsILhCABBCxAxCDAToLCC4QgAQQxwEQ0QM6CwguELEDEIMBENQCOggILhCxAxCDAToUCC4QgAQQsQMQgwEQxwEQowIQ1AI6CwguEIAEEMcBEKMCOgsIABCABBCxAxCDAVC3gAJYiIMCYLKFAmgCcAB4AIABgAGIAcoCkgEDMC4zmAEAoAEBsAEA&sclient=gws-wiz")
@@ -51,7 +46,6 @@ for keyword in keywords:
   time.sleep(0.7+(random.random()*2))
   browser.find_element_by_xpath("//*[@id='tsf']/div/div/div/div/div/input").send_keys(Keys.ENTER)
   time.sleep(1+(random.random()*2))
-  # print(keyword)
 
   for p in list(range(4)):
 
@@ -73,7 +67,6 @@ for keyword in keywords:
       flag = ""
     
       #scrapping de contatos dentro da pagina do ads
-      # print(i)
       print (str(i+1) + "        "+ ads_url[i] )
       try:
         url = ads_url[i]
@@ -192,35 +185,3 @@ for keyword in keywords:
   cell = stack2.find(keyword)
   currentDateTime = datetime.now()
   stack2.update_cell(cell.row, cell.col - 1, currentDateTime.strftime('%d/%m/%Y %H:%M')) 
-
-
-
-
-
-
-      
-
-# news = pd.DataFrame(ads_list, columns=['Nome do ADs', 'Landing Page', 'Upper Url', 'Subtitulo', 'Sub tem palavra chave?', 'Telefone?'])
-
-# news.to_excel('ads.xlsx', index=False)
-
-# time.sleep(3)
-
-
-# tweet = self.browser.find_element_by_xpath("//div[@role='textbox']")
-# tweet.send_keys("""Hello World from Selenium""")
-# tweet.send_keys(Keys.COMMAND, Keys.ENTER)
-# bot = self.browser
-# bot.find_element_by_xpath("/html/body/div/div/div/div[2]/main/div/div/div/div/div/div[1]/div[2]/nav/div/div[2]/div/div[2]/a/div").click()
-        
-
-            
-        # else:
-        #     cell = stack.find(username)
-        #     stack.update_cell(cell.row, cell.col - 2, "DM Fechada")
-        #     currentDateTime = datetime.now()
-        #     stack.update_cell(cell.row, cell.col - 1, currentDateTime.strftime('%d/%m/%Y %H:%M'))
-        #     print(username + "'s DM is closed :/")
-
-        
-        # stack2.delete_rows(2)
