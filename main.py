@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium import common
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
 import spreadsheet
 import re
 from bs4 import BeautifulSoup
@@ -28,7 +29,7 @@ word_counter = 0
 
 options = webdriver.ChromeOptions()
 
-options.add_argument("--headless")
+# options.add_argument("--headless")
 options.add_argument("--incognito")
 
 random.seed()
@@ -39,22 +40,22 @@ browser.get("https://www.google.com/search?q=aaa&source=hp&ei=G5J5Yq3gGpiq1sQP7N
 for keyword in keywords:
   
   time.sleep(1+(random.random()*2))
-  browser.find_element_by_xpath("//*[@id='tsf']/div/div/div/div/div/input").click()
+  browser.find_element(By.XPATH,"//*[@id='tsf']/div/div/div/div/div/input").click()
   action = ActionChains(browser)
   action.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).perform()
-  browser.find_element_by_xpath("//*[@id='tsf']/div/div/div/div/div/input").send_keys(keyword)
+  browser.find_element(By.XPATH,"//*[@id='tsf']/div/div/div/div/div/input").send_keys(keyword)
   time.sleep(0.7+(random.random()*2))
-  browser.find_element_by_xpath("//*[@id='tsf']/div/div/div/div/div/input").send_keys(Keys.ENTER)
+  browser.find_element(By.XPATH,"//*[@id='tsf']/div/div/div/div/div/input").send_keys(Keys.ENTER)
   time.sleep(1+(random.random()*2))
 
   for p in list(range(4)):
 
-    ad_name = browser.find_elements_by_xpath("//div[@class='uEierd']//div/div/div/a/div[1]/span")
-    upper_url = browser.find_elements_by_xpath("//div[@class='uEierd']//div/div/div/a/div[2]/span[2]")
-    ads_urls = browser.find_elements_by_xpath("//div[@class='uEierd']/div/div/div/div/a") #pega o conteudo de toda a tag <a>
+    ad_name = browser.find_elements(By.XPATH, "//div[@class='uEierd']//div/div/div/a/div[1]/div/span")
+    upper_url = browser.find_elements(By.XPATH, "//div[@class='uEierd']//div/div/div/a/div[2]/span[2]")
+    ads_urls = browser.find_elements(By.XPATH, "//div[@class='uEierd']/div/div/div/div/a") #pega o conteudo de toda a tag <a>
     ads_url = [elem.get_attribute('href') for elem in ads_urls] #separa a url (href) da tag <a> e coloca na variavel nova
-    ads_sub = browser.find_elements_by_xpath("//div[@class='MUxGbd yDYNvb lyLwlc']")
-    top_ads_count = len(browser.find_elements_by_xpath("//*[@id='tvcap']//div[@class='uEierd']"))
+    ads_sub = browser.find_elements(By.XPATH, "//div[@class='MUxGbd yDYNvb lyLwlc']")
+    top_ads_count = len(browser.find_elements(By.XPATH, "//*[@id='tvcap']//div[@class='uEierd']"))
     google_page = p + 1
 
     lista_palavras = keyword.split()
@@ -133,21 +134,21 @@ for keyword in keywords:
       if(i<top_ads_count):
         #site link
         try:
-          site_link_validator = browser.find_element_by_xpath("//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='bOeY0b'] ")
+          site_link_validator = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='bOeY0b'] ")
           site_link = 'Sim'
         except:
           site_link = '-'
         
         #localização
         try:
-          location_validator = browser.find_element_by_xpath("//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='Qezod'] ")
+          location_validator = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='Qezod'] ")
           location = 'Sim'
         except:
           location = '-'
 
 
         try:
-          phone_numbers = browser.find_element_by_xpath("//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//a//span[4]")
+          phone_numbers = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//a//span[4]")
           phone_number=phone_numbers.get_attribute('textContent')
           ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link, 'Sim', location, '', '', '', '', '', email, instagram_link, facebook_link,  phone_number, '', flag])
         except:
@@ -157,20 +158,20 @@ for keyword in keywords:
               #localização
 
         try:
-          location_validator = browser.find_element_by_xpath("//*[@id='bottomads']//div[@class='uEierd']["+str(i+1-top_ads_count)+"]//*[@class='Qezod'] ")
+          location_validator = browser.find_element(By.XPATH,"//*[@id='bottomads']//div[@class='uEierd']["+str(i+1-top_ads_count)+"]//*[@class='Qezod'] ")
           location = 'Sim'
         except:
           location = '-'
 
         #site link
         try:
-          site_link_validator = browser.find_element_by_xpath("//*[@id='bottomads']//div[@class='uEierd']["+str(i+1-top_ads_count)+"]//*[@class='bOeY0b'] ")
+          site_link_validator = browser.find_element(By.XPATH,"//*[@id='bottomads']//div[@class='uEierd']["+str(i+1-top_ads_count)+"]//*[@class='bOeY0b'] ")
           site_link = 'Sim'
         except:
           site_link = '-'
 
         try:
-          phone_numbers = browser.find_element_by_xpath("//*[@id='bottomads']//div[@class='uEierd']["+str(i+1-top_ads_count)+"]//a//span[4]")
+          phone_numbers = browser.find_element(By.XPATH,"//*[@id='bottomads']//div[@class='uEierd']["+str(i+1-top_ads_count)+"]//a//span[4]")
           phone_number=phone_numbers.get_attribute('textContent')
           ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , 'Sim', location, '', '', '', '', '', email, instagram_link, facebook_link,  phone_number, '', flag])
         except:
@@ -180,7 +181,7 @@ for keyword in keywords:
 
       stack.append_rows(ads_list)
 
-    browser.find_element_by_xpath("//*[@id='pnnext']").click()  
+    browser.find_element(By.XPATH,"//*[@id='pnnext']").click()  
    
   cell = stack2.find(keyword)
   currentDateTime = datetime.now()
