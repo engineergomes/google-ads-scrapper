@@ -1,52 +1,70 @@
-# Google Ads Scraper
+# Google Ads Scrapper
 
-The Google Ads Scraper is a powerful tool designed for Google Sheets integration, enabling you to extract valuable data for marketing prospecting. Follow these steps to set up and use the bot effectively:
+## Table of Contents
 
-## Setup
+1. [Overview](#overview)
+2. [Installation](#installation)
+3. [Configuration](#configuration)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Contact](#contact)
 
-1. **Create a Google Service Account**:
+## Overview
 
-   - Navigate to [Google Cloud Console](https://console.cloud.google.com).
-   - Set up a Google Service Account for your project.
+This repository contains a Python script designed to scrape Google Ads data and integrate it with Google Sheets. It's a powerful tool for marketing prospecting.
 
-2. **Download Key Documentation**:
+## Installation
 
-   - Download the generated JSON key file for your Service Account.
+### Clone the Repository
 
-3. **Rename and Place the Key File**:
+```bash
+git clone https://github.com/engineergomes/google-ads-scrapper.git
+```
 
-   - Rename the downloaded JSON file to `client_secret.json`.
-   - Add this renamed file to the bot folder.
+### Install Dependencies
 
-## Google Sheets Configuration
+```bash
+pip install -r requirements.txt
+```
 
-To utilize the Google Sheets integration, you need to configure your Google Sheets document correctly:
+## Configuration
 
-1. **Create Tabs**:
+### Google Service Account
 
-   - In your Google Sheets document, create two tabs (sheets) with the same names you're using in the `spreadsheet.py` file: "Key Words" and "General."
+- Navigate to the [Google Cloud Console](https://console.cloud.google.com).
+- Set up a Google Service Account for your project.
+- Download the generated JSON key file for your Service Account.
+- Rename the downloaded JSON file to `client_secret.json`.
+- Add this renamed file to the bot folder.
 
-2. **Key Words Tab**:
+### Google Sheets
 
-   - In the "Key Words" tab, list the words you want to search for in your Google Ads campaigns. Follow this format:
+- Create two tabs in your Google Sheets document: "Key Words" and "General."
+- In the "Key Words" tab, list the words you want to search for in your Google Ads campaigns.
+- In the "General" tab, structure your data as per the instructions in the previous README.
 
-     ![Key Words Tab](https://user-images.githubusercontent.com/33553051/187916315-6cf44694-8877-4211-ba22-15595674686c.png)
+## Usage
 
-3. **General Tab**:
+### Run the Script
 
-   - In the "General" tab, structure your data like this (the column names can be customized):
+```bash
+python main.py
+```
 
-     ![General Tab](https://user-images.githubusercontent.com/33553051/187917844-121a2f57-3e36-45c7-8ea5-8a159af7e4dd.png)
+### Data Analysis
 
-     - The ratings "100%" and "sim" indicate the quality of the ads.
-     - In the "Contatos" (Contacts) column, you can find the contact details of the ad owners.
+- The script will populate the Google Sheets with scraped data.
+- You can analyze this data to identify potential clients who may benefit from your marketing services.
 
-## Data Analysis and Prospecting
+## Contributing
 
-With this setup, you can analyze Google Ads data and identify potential clients who may benefit from your marketing services. Target those advertisers who are not achieving optimal results with their ads and offer your expertise to boost their campaigns.
+If you would like to contribute, please fork the repository and submit a pull request.
 
-## Need Help?
+## License
 
-Encountering issues while setting up or running the bot? Create an issue, and we'll be happy to assist you!
+This project is licensed under the MIT License.
 
-Happy prospecting and successful marketing campaigns!
+## Contact
+
+For any queries, please open an issue in the GitHub repository.
