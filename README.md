@@ -1,36 +1,52 @@
-# google-ads-scrapper
+# Google Ads Scraper
 
-This bot works with googlesheets integration, you have to create one sheet and activate the googlesheet API
+The Google Ads Scraper is a powerful tool designed for Google Sheets integration, enabling you to extract valuable data for marketing prospecting. Follow these steps to set up and use the bot effectively:
 
-- Create a google service account here: https://console.cloud.google.com
+## Setup
 
-- Download the key documentation as a .json
+1. **Create a Google Service Account**:
 
-- Rename it to client_secret.json and add the file to the bot folder
+   - Navigate to [Google Cloud Console](https://console.cloud.google.com).
+   - Set up a Google Service Account for your project.
 
-- At your google sheets create two tabs with the same names you're using in the spredsheet.py file ("Key Words" and "General")
+2. **Download Key Documentation**:
 
-- Make a list of words to search inside key words tab like this: 
+   - Download the generated JSON key file for your Service Account.
 
-![image](https://user-images.githubusercontent.com/33553051/187916315-6cf44694-8877-4211-ba22-15595674686c.png)
+3. **Rename and Place the Key File**:
 
+   - Rename the downloaded JSON file to `client_secret.json`.
+   - Add this renamed file to the bot folder.
 
-General tab will looklike this:
+## Google Sheets Configuration
 
-![image](https://user-images.githubusercontent.com/33553051/187917844-121a2f57-3e36-45c7-8ea5-8a159af7e4dd.png)
+To utilize the Google Sheets integration, you need to configure your Google Sheets document correctly:
 
+1. **Create Tabs**:
 
-Its in portuguese, but you can change the names of each column, a good AD will get "100%" and "sim" grades
+   - In your Google Sheets document, create two tabs (sheets) with the same names you're using in the `spreadsheet.py` file: "Key Words" and "General."
 
-In General tab you'll also find the contacts of the AD owner:
+2. **Key Words Tab**:
 
-![image](https://user-images.githubusercontent.com/33553051/187919030-397040d6-7f27-4e08-84a7-088ba795414a.png)
+   - In the "Key Words" tab, list the words you want to search for in your Google Ads campaigns. Follow this format:
 
+     ![Key Words Tab](https://user-images.githubusercontent.com/33553051/187916315-6cf44694-8877-4211-ba22-15595674686c.png)
 
-So, if you're an Marketing agency you just need to contact those who are making pretty bad choices for their ADs and make some $$ helping them!
+3. **General Tab**:
 
-Have a good good prospecting!
+   - In the "General" tab, structure your data like this (the column names can be customized):
 
+     ![General Tab](https://user-images.githubusercontent.com/33553051/187917844-121a2f57-3e36-45c7-8ea5-8a159af7e4dd.png)
 
+     - The ratings "100%" and "sim" indicate the quality of the ads.
+     - In the "Contatos" (Contacts) column, you can find the contact details of the ad owners.
 
-Having trouble running this? Create a issue and I'll help you!
+## Data Analysis and Prospecting
+
+With this setup, you can analyze Google Ads data and identify potential clients who may benefit from your marketing services. Target those advertisers who are not achieving optimal results with their ads and offer your expertise to boost their campaigns.
+
+## Need Help?
+
+Encountering issues while setting up or running the bot? Create an issue, and we'll be happy to assist you!
+
+Happy prospecting and successful marketing campaigns!
