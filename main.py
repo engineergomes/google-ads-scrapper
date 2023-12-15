@@ -2,6 +2,7 @@ import time
 import random
 import pandas as pd
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium import common
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -28,13 +29,15 @@ k = 0
 word_counter = 0
 
 options = webdriver.ChromeOptions()
+service = Service(executable_path=r'./chromedriver')
+
 
 # options.add_argument("--headless")
 options.add_argument("--incognito")
 
 random.seed()
 
-browser = webdriver.Chrome("./chromedriver", options=options)
+browser = webdriver.Chrome(service=service, options=options)
 browser.get("https://www.google.com/search?q=aaa&source=hp&ei=G5J5Yq3gGpiq1sQP7NCH4AQ&iflsig=AJiK0e8AAAAAYnmgKxlMgmed1qcgn8cSftu1dd1NpfV1&ved=0ahUKEwjt2aytuNP3AhUYlZUCHWzoAUwQ4dUDCAc&uact=5&oq=aaa&gs_lcp=Cgdnd3Mtd2l6EAMyDgguEIAEELEDEMcBEKMCMgsILhCABBCxAxDUAjIFCAAQgAQyCwguEIAEEMcBEK8BMggILhCABBCxAzIFCAAQgAQyBQguEIAEMggIABCxAxCDATIICAAQgAQQsQMyEQguEIAEELEDEIMBEMcBENEDOgsILhCABBCxAxCDAToLCC4QgAQQxwEQ0QM6CwguELEDEIMBENQCOggILhCxAxCDAToUCC4QgAQQsQMQgwEQxwEQowIQ1AI6CwguEIAEEMcBEKMCOgsIABCABBCxAxCDAVC3gAJYiIMCYLKFAmgCcAB4AIABgAGIAcoCkgEDMC4zmAEAoAEBsAEA&sclient=gws-wiz")
 
 for keyword in keywords:
