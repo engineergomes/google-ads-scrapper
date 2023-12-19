@@ -27,9 +27,11 @@ i = 0
 ads_list = []
 k = 0
 word_counter = 0
+def scroll_down():
+    browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
 options = webdriver.ChromeOptions()
-service = Service(executable_path=r'./chromedriver')
+service = Service(executable_path=r'./chromedriverlinux')
 
 
 # options.add_argument("--headless")
@@ -43,12 +45,12 @@ browser.get("https://www.google.com/search?q=aaa&source=hp&ei=G5J5Yq3gGpiq1sQP7N
 for keyword in keywords:
   
   time.sleep(1+(random.random()*2))
-  browser.find_element(By.XPATH,"//*[@id='tsf']/div/div/div/div/div/input").click()
+  browser.find_element(By.XPATH,"//form//textarea").click()
   action = ActionChains(browser)
   action.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).perform()
-  browser.find_element(By.XPATH,"//*[@id='tsf']/div/div/div/div/div/input").send_keys(keyword)
+  browser.find_element(By.XPATH,"//form//textarea").send_keys(keyword)
   time.sleep(0.7+(random.random()*2))
-  browser.find_element(By.XPATH,"//*[@id='tsf']/div/div/div/div/div/input").send_keys(Keys.ENTER)
+  browser.find_element(By.XPATH,"//form//textarea").send_keys(Keys.ENTER)
   time.sleep(1+(random.random()*2))
 
   for p in list(range(4)):
@@ -184,7 +186,10 @@ for keyword in keywords:
 
       stack.append_rows(ads_list)
 
-    browser.find_element(By.XPATH,"//*[@id='pnnext']").click()  
+    scroll_down()
+
+
+    # browser.find_element(By.XPATH,"//*[@id='pnnext']").click()  
    
   cell = stack2.find(keyword)
   currentDateTime = datetime.now()
