@@ -55,13 +55,20 @@ for keyword in keywords:
 
   for p in list(range(4)):
 
-    ad_name = browser.find_elements(By.XPATH, "//div[@class='uEierd']//div/div/div/a/div[1]/div/span")
-    upper_url = browser.find_elements(By.XPATH, "//div[@class='uEierd']//div/div/div/a/div[2]/span[2]")
+    ad_name = browser.find_elements(By.XPATH, "//div[@class='uEierd']//div/div/div/a/div[1]/span")
+    print("ad name", ad_name)
+    upper_url = browser.find_elements(By.XPATH, "//div[@class='uEierd']//div/div/div/a/div[2]/span[1]/span[2]/span[2]")
+    print("upper url", upper_url)
     ads_urls = browser.find_elements(By.XPATH, "//div[@class='uEierd']/div/div/div/div/a") #pega o conteudo de toda a tag <a>
+    print('ads urls', ads_urls)
     ads_url = [elem.get_attribute('href') for elem in ads_urls] #separa a url (href) da tag <a> e coloca na variavel nova
-    ads_sub = browser.find_elements(By.XPATH, "//div[@class='MUxGbd yDYNvb lyLwlc']")
+    print("ads url",ads_url)
+    ads_sub = browser.find_elements(By.XPATH, "//div[@class='Va3FIb r025kc lVm3ye']")
+    print("adssub",ads_sub)
     top_ads_count = len(browser.find_elements(By.XPATH, "//*[@id='tvcap']//div[@class='uEierd']"))
+    print("top_ads_count",top_ads_count)
     google_page = p + 1
+    print('google page', google_page)
 
     lista_palavras = keyword.split()
     print(" ")
@@ -111,9 +118,15 @@ for keyword in keywords:
         email = ""
         flag = "BO no acesso do site"
       
-      #faz verificação se o texto do anuncio contem a palavra chave, usar barra de espaço como separador para verificar cada palavra de forma independente
+      #faz verificação se o texto do anuncio contem a palavra chave, usar barra de espaço como separador para verificar cada 
+      #palavra de forma independente
+        
+      print("lista palavras", lista_palavras)
+      print("list", list(range(len(lista_palavras))))
       for k in list(range(len(lista_palavras))):
         # print(lista_palavras[k])
+        print('ad name',ad_name[i].text.lower())
+        print('ads sub[i]',ads_sub[i].text.lower())
         if lista_palavras[k].lower() in (" " + ads_sub[i].text.lower() + " " + ad_name[i].text.lower() + " " ):
           word_counter = word_counter + 1
         else:
@@ -126,7 +139,7 @@ for keyword in keywords:
       #faz verificação se o texto do caminho contem a palavra chave, usar barra de espaço como separador para verificar cada palavra de forma independente
       for j in list(range(len(lista_palavras))):
         # print(lista_palavras[j])
-        if lista_palavras[j].lower() in (" " + ads_sub[i].text.lower() + " " + ad_name[i].text.lower() + " " ):
+        if lista_palavras[j].lower() in (" " + upper_url[i].text.lower()  + " " ):
           word_counter = word_counter + 1
         else:
           word_counter = word_counter + 0
@@ -153,11 +166,16 @@ for keyword in keywords:
 
 
         try:
-          phone_numbers = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//a//span[4]")
-          phone_number=phone_numbers.get_attribute('textContent')
-          ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link, 'Sim', location, '', '', '', '', '', email, instagram_link, facebook_link,  phone_number, '', flag])
+          phone_numbers = browser.find_element(By.XPATH,"/div[@jscontroller='x8umHb']")
+          phone_number=phone_numbers.get_attribute('data-dpn')
+          ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , 'Sim', location, '', '', '', '', '', email, instagram_link, facebook_link,  phone_number, '', flag])
         except:
-          ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , '-', location, '', '', '', '', '', email, instagram_link, facebook_link,  '', '', flag])
+          try:
+            phone_numbers = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='Qezod']/span[2]")
+            phone_number=phone_numbers.text
+            ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , 'Sim', location, '', '', '', '', '', email, instagram_link, facebook_link,  phone_number, '', flag]) 
+          except:
+            ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , '-', location, '', '', '', '', '', email, instagram_link,  facebook_link, '', '', flag])
       else:
 
               #localização
@@ -176,17 +194,23 @@ for keyword in keywords:
           site_link = '-'
 
         try:
-          phone_numbers = browser.find_element(By.XPATH,"//*[@id='bottomads']//div[@class='uEierd']["+str(i+1-top_ads_count)+"]//a//span[4]")
-          phone_number=phone_numbers.get_attribute('textContent')
+          phone_numbers = browser.find_element(By.XPATH,"/div[@jscontroller='x8umHb']")
+          phone_number=phone_numbers.get_attribute('data-dpn')
           ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , 'Sim', location, '', '', '', '', '', email, instagram_link, facebook_link,  phone_number, '', flag])
         except:
-          ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , '-', location, '', '', '', '', '', email, instagram_link,  facebook_link, '', '', flag])
+          try:
+            phone_numbers = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='Qezod']/span[2]")
+            phone_number=phone_numbers.text
+            ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , 'Sim', location, '', '', '', '', '', email, instagram_link, facebook_link,  phone_number, '', flag]) 
+          except:
+            ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , '-', location, '', '', '', '', '', email, instagram_link,  facebook_link, '', '', flag])
 
     
 
       stack.append_rows(ads_list)
 
-    scroll_down()
+      scroll_down()
+      time.sleep(1+(random.random()*2))
 
 
     # browser.find_element(By.XPATH,"//*[@id='pnnext']").click()  
