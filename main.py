@@ -31,7 +31,7 @@ def scroll_down():
     browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
 options = webdriver.ChromeOptions()
-service = Service(executable_path=r'./chromedriverlinux')
+service = Service(executable_path=r'./chromedriver')
 
 
 # options.add_argument("--headless")
