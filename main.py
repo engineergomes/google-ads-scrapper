@@ -152,22 +152,22 @@ for keyword in keywords:
       if(i<top_ads_count):
         #site link
         try:
-          site_link_validator = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='bOeY0b'] ")
+          site_link_validator = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='bOeY0b']")
           site_link = 'Sim'
         except:
           site_link = '-'
         
         #localização
         try:
-          location_validator = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='Qezod'] ")
+          location_validator = browser.find_element(By.XPATH,"//*[@id='tvcap']//div[@class='uEierd']["+str(i+1)+"]//*[@class='Qezod']")
           location = 'Sim'
         except:
           location = '-'
 
 
         try:
-          phone_numbers = browser.find_element(By.XPATH,"/div[@jscontroller='x8umHb']")
-          phone_number=phone_numbers.get_attribute('data-dpn')
+          phone_numbers = browser.find_elements(By.XPATH,"//div[@jscontroller='x8umHb']")
+          phone_number = phone_numbers[i].get_attribute('data-dpn')
           ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , 'Sim', location, '', '', '', '', '', email, instagram_link, facebook_link,  phone_number, '', flag])
         except:
           try:
@@ -194,8 +194,8 @@ for keyword in keywords:
           site_link = '-'
 
         try:
-          phone_numbers = browser.find_element(By.XPATH,"/div[@jscontroller='x8umHb']")
-          phone_number=phone_numbers.get_attribute('data-dpn')
+          phone_numbers = browser.find_elements(By.XPATH,"//div[@jscontroller='x8umHb']")
+          phone_number=phone_numbers[i].get_attribute('data-dpn')
           ads_list.append([ads_url[i],keyword, google_page, copy_sinergy_ads, copy_sinergy_way, site_link , 'Sim', location, '', '', '', '', '', email, instagram_link, facebook_link,  phone_number, '', flag])
         except:
           try:
